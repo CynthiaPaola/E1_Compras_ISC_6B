@@ -213,4 +213,10 @@ Create table Proveedores(
 	estatus char not null,
 	constraint pk_Sucursales primary key (idSucursal)
 	)
+	
+	create table ExistenciasSucursal(
+	idPresentacion integer not null,
+	idSucursal integer not null,
+	cantidad float not null,
+	)
 )
