@@ -219,4 +219,49 @@ Create table Proveedores(
 	idSucursal integer not null,
 	cantidad float not null,
 	)
+	
+	create table Productos
+	(
+	idProducto integer identity(1,1) not null,
+	nombre varchar(50) not null,
+	descripcion varchar(100) not null,
+	ingredienteActivo varchar(100) not null,
+	bandaToxicologica varchar(80) not null,
+	aplicacion varchar(200) not null,
+	uso varchar(200) not null,
+	status char not null,
+	idLaboratorio integer not null,
+	idCategoria integer not null,
+	constraint pk_Productos primary key(idProducto),
+	--CONSTRAINT fk_Productos_Laboratorios FOREIGN KEY(idLaboratorio) REFERENCES Laboratorios(idLaboratorio),
+	--CONSTRAINT fk_Productos_Categorias FOREIGN KEY(idCategoria) REFERENCES Categorias(idCategoria)
+	)
+	
+	create table Laboratorios 
+	(
+	idLaboratorio integer identity(1,1) not null,
+	nombre varchar(50) not null,
+	origen varchar(30) not null,
+	estats char not null,
+	constraint pk_Laboratorios primary key(idLaboratorio)
+	)
+	create table Categorias
+	(
+	idCategoria integer identity(1,1)  not null,
+	nombre varchar(30) not null,
+	status char not null,
+	constraint pk_Categorias primary key(idCategoria)
+	)
+	
+	create table ImagenesProductos
+	(
+	idImagen integer identity(1,1) not null,
+	nombreImagen varchar(100) not null,
+	--imagen blob not null,
+	principal char not null,
+	idProducto integer not null,
+	constraint pk_ImagenesProductos primary key(idImagen),
+	--constraint fk_ImagenesProducto_Productos references Productos(idProducto)
+	)
+
 )
