@@ -171,4 +171,46 @@ Create table Proveedores(
 
 	CONSTRAINT pk_Mantenimientos PRIMARY KEY (idMantenimiento),
 	--constraint fk_Mantenimientos_UnidadTransporte FOREIGN KEY (idUnidadTransporte) REFERENCES UnidadesTransporte(idUnidadTransporte)
+	create table Empaques(
+	idEmpaque integer not null,
+	idUnidad integer not null,
+	nombre varchar(80),
+	capacidad float not null,
+	estatus char not null,
+	constraint pk_Empaques primary key(idEmpaque)
+	)
+
+	create table UnidadesMedida(
+	idUnidad integer not null,
+	nombre varchar(80),
+	siglas varchar(20),
+	estaus char not null,
+	constraint pk_UnidadesMedida primary key(idUnidad)
+	)
+
+	create table Ofertas(
+	idOferta integer not null,
+	idPresentacion integer not null,
+	nombre varchar(50),
+	descripcion varchar(100),
+	porDescuento float not null,
+	fechaInicio date not null,
+	fechaFin date not null,
+	canMinProducto integer not null,
+	estatus char not null,
+	constraint pk_Ofertas primary key(idOferta)
+	)
+
+	create table Sucursales(
+	idSucursal integer not null,
+	idCiudad integer not null,
+	nombre varchar(50),
+	telefono varchar(15),
+	direccion varchar(80),
+	colonia varchar(50),
+	codigoPostal varchar(5),
+	presupuesto float not null,
+	estatus char not null,
+	constraint pk_Sucursales primary key (idSucursal)
+	)
 )
