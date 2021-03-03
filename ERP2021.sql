@@ -349,7 +349,32 @@ Create table Proveedores(
 	idEmpleado integer not null,
 	idFormaPago integer not null,
 	idPeriodo integer not null,
-	constraint pk_Nominas primary key (idNomina)
+	constraint pk_Nominas primary key(idNomina)
 	)
+
+	create table Periodos(
+	idPeriodo integer not null,
+	nombre varchar,
+	fechaInicio date,
+	fechaFin date,
+	estatus char,
+	constraint pk_Periodos primary key(idPeriodo)
+	)
+
+	create table NominasDeducciones(
+	idNomina integer not null,
+	idDeduccion integer not null,
+	importe float
+	)
+
+	create table Deducciones(
+	idDeduccion integer not null,
+	nombre varchar,
+	decripcion varchar,
+	porcentaje float,
+	constraint pk_Deducciones primary key(idDeduccion)
+	)
+
+
 
 )
