@@ -263,5 +263,78 @@ Create table Proveedores(
 	constraint pk_ImagenesProductos primary key(idImagen),
 	--constraint fk_ImagenesProducto_Productos references Productos(idProducto)
 	)
+	
+	create table FormasPago(
+	idFormaPago integer not null,
+	nombre varchar(50),
+	estatus char not null,
+	constraint pk_FormasPago primary key (idFormaPago)
+	)
+
+	create table Turnos(
+	idTurno integer not null,
+	nombre varchar(20),
+	horaInicio date not null,
+	horaFin date not null,
+	dias varchar(30),
+	constraint pk_Turnos primary key(idTurno)
+	)
+
+	create table DocumentacionEmpleado(
+	idDocumento integer not null,
+	idEmpleado integer not null,
+	nombreDocumento varchar(80),
+	fechaEntrega date not null,
+	documento varbinary not null,
+	constraint pk_DocumentacionEmpleado primary key(idDocumento)
+	)
+
+	create table Empleados(
+	idEmpleado integer not null,
+	nombre varchar(30),
+	apellidoPaterno varchar(30),
+	apellidoMaterno varchar(30),
+	sexo char not null,
+	fechaNacimiento date not null,
+	curp varchar(20),
+	estadoCivil varchar(20),
+	fechaContratacion date not null,
+	salarioDiario float not null,
+	nss varchar(10),
+	diasVacaciones integer not null,
+	diasPermiso integer not null,
+	fotografia varbinary not null,
+	direccion varchar(80),
+	colonia varchar(50),
+	codigoPostal varchar(5),
+	escolaridad varchar(80),
+	especialidad varchar(100),
+	email varchar(100),
+	password varchar(20),
+	tipo varchar(10),
+	estatus char not null,
+	idDepartamento integer not null,
+	idPuesto integer not null,
+	idCiudad integer not null,
+	idSucursal integer not null,
+	idTurno integer not null,
+	constraint pk_Empleados primary key (idEmpleado)
+	)
+
+	create table Puestos(
+	idPuesto integer not null,
+	nombre varchar(60),
+	salarioMinimo float not null,
+	salarioMaximo float not null,
+	estatus char not null,
+	constraint pk_Puestos primary key(idPuesto)
+	)
+
+	create table Departamentos(
+	idDepartamento integer not null,
+	nombre varchar(50),
+	estatus char not null,
+	constraint pk_Departamentos primary key(idDepartamento)
+	)
 
 )
