@@ -337,4 +337,19 @@ Create table Proveedores(
 	constraint pk_Departamentos primary key(idDepartamento)
 	)
 
+	create table Nominas(
+	idNomina integer not null,
+	fechaElaboracion date,
+	fechaPago date,
+	subtotal float,
+	retenciones float,
+	total float,
+	diasTrabajados integer not null,
+	estatus char,
+	idEmpleado integer not null,
+	idFormaPago integer not null,
+	idPeriodo integer not null,
+	constraint pk_Nominas primary key (idNomina)
+	)
+
 )
