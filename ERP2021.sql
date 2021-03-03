@@ -375,6 +375,26 @@ Create table Proveedores(
 	constraint pk_Deducciones primary key(idDeduccion)
 	)
 
+	create table Percepciones(
+	idPercepcion integer not null,
+	nombre varchar,
+	descripcion varchar,
+	diasPagar integer not null,
+	constraint pk_Percepciones primary key(idPercepcion)
+	)
 
+	create table NominasPercepciones(
+	idNomina integer not null,
+	idPercepcion integer not null,
+	importe float,
+	constraint pk_NominasPercepciones primary key (idNomina, idPercepcion)
+	)
+
+	create table Tripulacion(
+	idEmpleado integer not null,
+	idEnvio integer not null,
+	rol varchar,
+	constraint pk_Tripulacion primary key (idEmpleado, idEnvio, rol)
+	)
 
 )
