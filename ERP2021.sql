@@ -388,5 +388,17 @@ Create table Proveedores(
 	rol varchar,
 	constraint pk_Tripulacion primary key (idEmpleado, idEnvio, rol)
 	)
-
+	
+	CREATE TABLE PresentacionesProductos(
+	idPresentacion integer IDENTITY(1,1) not null,
+	precioCompra float,
+	precioVenta float,
+	puntoReorden float, 
+	idProducto integer not null,
+	idEmpaque integer not null
+	CONSTRAINT pk_PresentacionesProducto PRIMARY KEY(idPresentacion)
+	constraint fk_PresentacionesProducto foreign key (idEmpaque) references Empaques(idEmpaque)
+	)
+	
+	
 )
