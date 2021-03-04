@@ -280,15 +280,7 @@ Create table Proveedores(
 	constraint pk_Turnos primary key(idTurno)
 	)
 
-	create table DocumentacionEmpleado(
-	idDocumento integer not null,
-	idEmpleado integer not null,
-	nombreDocumento varchar(80),
-	fechaEntrega date not null,
-	documento varbinary not null,
-	constraint pk_DocumentacionEmpleado primary key(idDocumento)
-	)
-
+	
 	create table Empleados(
 	idEmpleado integer not null,
 	nombre varchar(30),
