@@ -399,6 +399,61 @@ Create table Proveedores(
 	CONSTRAINT pk_PresentacionesProducto PRIMARY KEY(idPresentacion)
 	constraint fk_PresentacionesProducto foreign key (idEmpaque) references Empaques(idEmpaque)
 	)
+	create table HistorialPuestos(
+	idEmpleado int not null,
+	idPuesto int not null,
+	idDepartamento int not null,
+	fechaInicio date not null,
+	fechaFin date
+	constraint pk_HistorialPuestos primary key (fechaInicio,idEmpleado,idPuesto,idDepartamento),
+	constraint fk_HistorialPuestos_Empleados foreign key (idEmpleado) references Empleados(idEmpleado),
+	constraint fk_HistorialPuestos_Departamentos foreign key (idDepartamento) references Departamentos(idDepartamento),
+	constraint fk_HistorialPuestos_Puestos foreign key (idPuesto) references Puestos(idPuesto)
+	)
 	
+	CREATE TABLE PedidoDetalle(
+	idPedidoDetalle integer not null IDENTITY(1,1),
+	cantPedida integer not null,
+	precioCompra float not null,
+	subtotal float not null,
+	cantRecibida integer not null,
+	cantRechazada integer not null,
+	cantAceptada float not null, 
+	idPedido integer not null,
+	idPresentacion integer not null,
+
+	CONSTRAINT pk_PedidoDetalle PRIMARY KEY(idPedidoDetalle),
+	CONSTRAINT fk_PedidoDetalle_Pedido FOREIGN KEY(idPedido) REFERENCES Pedidos(idPedido),
+	CONSTRAINT fk_PedidoDetalle_Presentacion FOREIGN KEY(idPresentacion) REFERENCES PresentacionesProductos(idPresentacion)
+	)
+	
+	CREATE TABLE Pedidos(
+	idPedido integer not null IDENTITY(1,1),
+	fechaRegistro date not null,
+	fechaRecepcion date not null,
+	totalPagar float not null,
+	cantidadPagada float not null,
+	estatus char not null,
+	idProveedor integer not null,
+	idSucursal integer not null,
+	idEmpleado integer not null
+
+	CONSTRAINT pk_Pedidos PRIMARY KEY(idPedido),
+	CONSTRAINT fk_Pedidos_Proveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor),
+	CONSTRAINT fk_Pediddos_Sucursales FOREIGN KEY(idSucursal) REFERENCES Sucursales(idSucursal),
+	CONSTRAINT fk_Pedidos_Empleados FOREIGN KEY(idEmpleado) REFERENCES Empleados(idEmpleado)
+	)
+	
+	CREATE TABLE Pagos(
+	idPago integer not null IDENTITY(1,1),
+	fecha date not null,
+	importe float not null, 
+	idPedido integer not null,
+	idFormaPago integer not null,
+
+	CONSTRAINT pk_Pagos PRIMARY KEY(idPago),
+	CONSTRAINT fk_Pagos_Pedidos FOREIGN KEY(idPedido) REFERENCES Pedidos(idPedido),
+	CONSTRAINT fk_Pagos_FormaPago FOREIGN KEY(idFormaPago) REFERENCES FormasPago(idFormaPago),
+	)
 	
 )
