@@ -28,8 +28,8 @@ Create table Proveedores(
 	colonia varchar(50) not null,
 	codigoPostal varchar(5) not null,
 	idCiudad integer not null
-    constraint pk_Proveedores primary key(idProveedor),
-	--CONSTRAINT fk_Proveedores_Ciudades FOREIGN KEY(idCiudad) REFERENCES Ciudades(idCiudad)
+    	constraint pk_Proveedores primary key(idProveedor),
+	CONSTRAINT fk_Proveedores_Ciudades FOREIGN KEY(idCiudad) REFERENCES Ciudades(idCiudad)
 	)
 
 	create table CuentasProveerdor(
@@ -39,7 +39,7 @@ Create table Proveedores(
 	banco varchar(10) not null,
 	referenciaBancaria varchar(20) not null
 	constraint pk_CuentasProveedor primary key(idCuentaProveedor),
-	--CONSTRAINT fk_CuentasProveedor_Proveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor)
+	CONSTRAINT fk_CuentasProveedor_Proveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor)
 	)
 
 	create table ContactosProveedor(
@@ -49,7 +49,7 @@ Create table Proveedores(
 	email varchar(12) not null,
 	idProveedor integer not null
 	constraint pk_ContactosProveedor primary key(idContacto),
-	--CONSTRAINT fk_ContactosProveedor_Porveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor)
+	CONSTRAINT fk_ContactosProveedor_Porveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor)
 	)
 
 	create table ProductosProveedor(
@@ -61,8 +61,8 @@ Create table Proveedores(
 	cantMinPedir integer not null,
 	cantMaxPedir integer not null
 	constraint pk_ProductosProveedor primary key(idProveedor,idPresentacion),
-	--CONSTRAINT fk_ProductosProveedor_Proveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor),
-	--CONSTRAINT fk_ProductoProveedor_PresentacionesProducto FOREIGN KEY(idPresentacion) REFERENCES PresentacionesProductos(idPresentacion)
+	CONSTRAINT fk_ProductosProveedor_Proveedores FOREIGN KEY(idProveedor) REFERENCES Proveedores(idProveedor),
+	CONSTRAINT fk_ProductoProveedor_PresentacionesProducto FOREIGN KEY(idPresentacion) REFERENCES PresentacionesProductos(idPresentacion)
 	);
 
 	create table Ciudades(
@@ -89,12 +89,12 @@ Create table Proveedores(
 	tipo char,
 	idEmpleadoS int,
 	idEmpleadoA int,
-	--evidencia BLOB,
+	evidencia varbinary,
 	motivo varchar(100),
 	estatus char,
 	constraint AusenciasJustificadas_PK primary key (idAusencia),
-	--constraint AusenciasJustificadas_EmpleadosA_FK foreign key (idEmpleadoA) references Empleados(idEmpleado),
-	--constraint AusenciasJustificadas_EmpleadosS_FK foreign key (idEmpleadoS) references Empleados(idEmpleado)
+	constraint AusenciasJustificadas_EmpleadosA_FK foreign key (idEmpleadoA) references Empleados(idEmpleado),
+	constraint AusenciasJustificadas_EmpleadosS_FK foreign key (idEmpleadoS) references Empleados(idEmpleado)
 	)
 
 	create table Asistencias(
@@ -105,7 +105,7 @@ Create table Proveedores(
 	dia varchar(10) not null,
 	idEmpleado integer not null
 	constraint pk_Asistencias primary key (idAsistencia),
-	--constraint fk_Asistencias_Empleados foreign key (idEmpleado) references Empleados(idEmpleado)
+	constraint fk_Asistencias_Empleados foreign key (idEmpleado) references Empleados(idEmpleado)
 	)
 
 	create table DocumentacionEmpleado(
@@ -115,7 +115,7 @@ Create table Proveedores(
 	documento varbinary,
 	idEmpleado int,
 	constraint pk_DocumentacionEmpleado primary key (idDocumento),
-	--constraint fk_DocumentacionEmpleado_Empleado foreign key (idEmpleado) references Empleados(idEmpleado)
+	constraint fk_DocumentacionEmpleado_Empleado foreign key (idEmpleado) references Empleados(idEmpleado)
 	)
 
 	CREATE TABLE Cobros(
@@ -126,8 +126,8 @@ Create table Proveedores(
 	idFormaPago INTEGER not null,
 
 	CONSTRAINT pk_Cobros PRIMARY KEY(idCobro),
-	--constraint fk_Cobros_Venta FOREIGN KEY (idVenta) REFERENCES Ventas(idVenta),
-	--constraint fk_Cobros_FormaPago FOREIGN KEY (idFormaPago) REFERENCES FormasPago(idFormaPago)
+	constraint fk_Cobros_Venta FOREIGN KEY (idVenta) REFERENCES Ventas(idVenta),
+	constraint fk_Cobros_FormaPago FOREIGN KEY (idFormaPago) REFERENCES FormasPago(idFormaPago)
 	);
 
 	CREATE TABLE Clientes(
@@ -154,8 +154,8 @@ Create table Proveedores(
 	idCliente integer not null,
 	idCiudad integer not null
 	constraint pk_Direccion_Cliente primary key(idCliente),
-	--constraint fk_Direcciones_Clientes_Ciudad FOREIGN KEY (idCiudad) REFERENCES Ciudades(idCiudad),
-	--constraint fk_Direcciones_Clientes_Ciudad FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente)
+	constraint fk_Direcciones_Clientes_Ciudad FOREIGN KEY (idCiudad) REFERENCES Ciudades(idCiudad),
+	constraint fk_Direcciones_Clientes_Ciudad FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente)
 	)
 
 	CREATE TABLE Mantenimientos(
@@ -170,7 +170,8 @@ Create table Proveedores(
 	
 
 	CONSTRAINT pk_Mantenimientos PRIMARY KEY (idMantenimiento),
-	--constraint fk_Mantenimientos_UnidadTransporte FOREIGN KEY (idUnidadTransporte) REFERENCES UnidadesTransporte(idUnidadTransporte)
+	constraint fk_Mantenimientos_UnidadTransporte FOREIGN KEY (idUnidadTransporte) REFERENCES UnidadesTransporte(idUnidadTransporte)
+	)
 	create table Empaques(
 	idEmpaque integer not null,
 	idUnidad integer not null,
@@ -455,5 +456,63 @@ Create table Proveedores(
 	CONSTRAINT fk_Pagos_Pedidos FOREIGN KEY(idPedido) REFERENCES Pedidos(idPedido),
 	CONSTRAINT fk_Pagos_FormaPago FOREIGN KEY(idFormaPago) REFERENCES FormasPago(idFormaPago),
 	)
+	CREATE TABLE Ventas(
+	idVenta INTEGER IDENTITY(1,1) NOT NULL,
+	fecha DATE,
+	subtotal float,
+	iva float,
+	total FLOAT,
+	cantPagada FLOAT,
+	comentarios VARCHAR(100),
+	estatus CHAR,
+	tipo CHAR,
+	idCliente INTEGER,
+	idSucursal INTEGER,
+	idEmpleado INTEGER,
+
+	CONSTRAINT pk_Ventas PRIMARY KEY(idVenta),
+	constraint fk_Ventas_Clientes FOREIGN KEY(idCliente) REFERENCES Clientes(idCliente),
+	constraint fk_Ventas_Sucursal FOREIGN KEY(idSucursal) REFERENCES Sucursales(idSucursal),
+	constraint fk_Ventas_Empleado FOREIGN KEY(idEmpleado) REFERENCES Empleados(idEmpleado)
+	)
 	
-)
+	CREATE TABLE UnidadesTransporte(
+	idUnidadTransporte INTEGER IDENTITY(1,1) NOT NULL,
+	placas VARCHAR(10),
+	marca VARCHAR(80),
+	modelo VARCHAR(80),
+	anio INTEGER,
+	capacidad INTEGER,
+	tipo VARCHAR(30),
+
+	CONSTRAINT pk_UnidadesTransporte PRIMARY KEY (idUnidadTransporte)
+	)
+	
+	create table Envios(
+ 	idEnvio integer identity(1,1) not null,
+ 	fechaInicio date,
+ 	fechaFin date,
+ 	idUnidadTransporte integer not null,
+ 	pesototal float not null,
+ 
+ 	constraint pk_Envios primary key (idEnvio),
+ 	constraint fk_Envios_UnidadTransporte FOREIGN KEY (idUnidadTransporte) REFERENCES UnidadesTransporte(idUnidadTransporte)
+ 	)
+	
+	create table Detalles_Envio(
+ 	idEnvio integer identity(1,1)not null,
+ 	idVenta integer not null,
+ 	idDireccion integer not null,
+ 	fechaEntregaPlaneada date,
+ 	fechaRecepcion date,
+ 	peso float not null,
+ 	estatus char,
+ 	idContacto integer not null
+
+ 	constraint pk_Detalles_Envio primary key (idVenta,IdEnvio)
+ 	constraint fk_Detalles_Envio_Envios Foreign key(idEnvio) References Envios(idEnvio),
+ 	constraint fk_Detalles_Envio_Ventas Foreign key(idVenta) References Ventas(idVenta),
+ 	constraint fk_Detalles_Envio_Direcciones_Cliente Foreign key(idDireccion) References Direcciones_Cliente(idDireccion),
+ 	constraint fk_Detalles_Envio_ContactosCliente Foreign key(idContacto) References ContactosCliente(idContacto)
+ 	)
+
