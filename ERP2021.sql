@@ -515,4 +515,88 @@ Create table Proveedores(
  	constraint fk_Detalles_Envio_Direcciones_Cliente Foreign key(idDireccion) References Direcciones_Cliente(idDireccion),
  	constraint fk_Detalles_Envio_ContactosCliente Foreign key(idContacto) References ContactosCliente(idContacto)
  	)
+	
+	create table VentasDetalle(
+	idVentaDetalle integer not null,
+	precioVenta float not null,
+	cantidad float not null,
+	subtotal float not null,
+	idVenta integer not null,
+	idPresentacion integer not null,
+	constraint pk_VentasDetalle primary key (idVentaDetalle),
+	--constraint fk_VentasDetalle_Ventas foreigh key(idVenta)
+	--constraint fk_VentasDetalle_PresentacionesProducto foreigh key(idVenta)
+	)
+
+	create table OfertasAsociacion(
+	idAsociacion integer not null,
+	idOferta integer not null,
+	estatus char not null,
+	constraint pk_OfertasAsociacion primary key(idAsociacion, idOferta),
+	--constraint fk_OfertasAsociacion_Asociaciones foreigh key(idAsociacion)
+	--constraint fk_OfertasAsociacion_Ofertas foreigh key(idOferta)
+	)
+
+	create table Asociaciones(
+	idAsociacion integer not null,
+	estatus char not null,
+	fechaIncorporacion date not null,
+	constraint pk_Asociaciones primary key (idAsociacion)
+	)
+
+	create table Miembros(
+	idCliente integer not null,
+	idAsociacion integer not null,
+	estatus char not null,
+	fechaIncorporacion date not null,
+	constraint pk_Miembros primary key(idAsociacion, idCliente),
+	--constraint Miembros_Clientes foreigh key (idCliente)
+	--constraint Miembros_Asociaciones foreigh key (idAsociaciones)
+	)
+
+	create table Cultivos(
+	idCultivo integer not null,
+	nombre varchar(100),
+	costoAsesoria float not null,
+	estatus char,
+	constraint pk_cultivos primary key (idCultivo)
+	)
+
+	create table Parcelas(
+	idParcela integer not null,
+	extencion float not null,
+	idCliente integer not null,
+	idCultivo integer not null,
+	idDireccion integer not null,
+	constraint pk_Parcelas primary key(idParcela)
+	--constraint pk_Parcelas_Clientes foreigh key (idCliente)
+	--constraint pk_Parcelas_Cultivos foreigh key (idCultivo)
+	--constraint pk_Parcelas_Direcciones_Cliente foreigh key (idCDireccion)
+	)
+
+	create table ContactosCliente(
+	idContacto integer not null,
+	nombre varchar(100),
+	telefono varchar(12),
+	email varchar(100),
+	idCliente integer not null,
+	constraint pk_ContactosCliente primary key (idContacto)
+	--constraint fk_ContactosCliente_Cliente foreigh key (idCliente)
+	)
+
+	create table Asesorias(
+	idAsesoria integer not null,
+	fecha date not null,
+	comentarios varchar(200),
+	estatus char not null,
+	costo float not null,
+	idParcela integer not null,
+	idEmpleado integer not null,
+	idUnidadTransporte integer not null,
+	constraint pk_Asesorias primary key (idAsesoria)
+	--constraint fk_Asesorias_ClientesCultivos foreigh key(idParcela)
+	--constraint fk_Asesorias_UnidadesTransporte foreigh key(idUnidadTransporte)
+	--constraint fk_Asesorias_Empleados foreigh key(idEmpleados)
+
+	)
 
