@@ -13,7 +13,7 @@ public class Conexion
         String conexion="jdbc:sqlserver://localhost:1433;"
                 +"database=Compras;"
                 +"user=sa;"
-                +"password=toni;"
+                +"password=1234;"
                 +"loginTimeout=30;";
         try
             {
