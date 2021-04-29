@@ -51,6 +51,7 @@ public class menu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnimagenes_productos = new javax.swing.JButton();
         btncontactos_proveedor = new javax.swing.JButton();
+        btncontactos_proveedor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +73,11 @@ public class menu extends javax.swing.JFrame {
         btnpagos.setText("Pagos");
 
         btnunidades_medida.setText("Unidades  Medida");
+        btnunidades_medida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnunidades_medidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,8 +116,18 @@ public class menu extends javax.swing.JFrame {
         btnproveedores.setText("Proveedores");
 
         btncategorias.setText("Categorias");
+        btncategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncategoriasActionPerformed(evt);
+            }
+        });
 
         btnlaboratorios.setText("Laboratorios");
+        btnlaboratorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlaboratoriosActionPerformed(evt);
+            }
+        });
 
         btnproductos.setText("Productos");
 
@@ -153,6 +169,11 @@ public class menu extends javax.swing.JFrame {
         btncuentas_proveedor.setText("Cuentas Proveedor");
 
         btnempaques.setText("Empaques");
+        btnempaques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnempaquesActionPerformed(evt);
+            }
+        });
 
         btnpresentaciones_producto.setText("Presentaciones Producto");
 
@@ -186,21 +207,31 @@ public class menu extends javax.swing.JFrame {
 
         btnimagenes_productos.setText("Imagenes Productos");
 
-        btncontactos_proveedor.setText("Contactos Proveedor");
+        btncontactos_proveedor.setText("Unidades de Transporte");
+        btncontactos_proveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncontactos_proveedorActionPerformed(evt);
+            }
+        });
+
+        btncontactos_proveedor1.setText("Contactos Proveedor");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnimagenes_productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btncontactos_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+            .addComponent(btncontactos_proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+            .addComponent(btncontactos_proveedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(btnimagenes_productos)
-                .addGap(41, 41, 41)
+                .addGap(52, 52, 52)
+                .addComponent(btncontactos_proveedor1)
+                .addGap(35, 35, 35)
                 .addComponent(btncontactos_proveedor)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -214,7 +245,7 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,6 +294,42 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btncategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncategoriasActionPerformed
+       Categoriass ventana = new Categoriass();
+       ventana.LimpiarTable();
+       ventana.ListarCategorias();
+           
+            ventana.setVisible(true);
+    }//GEN-LAST:event_btncategoriasActionPerformed
+
+    private void btnempaquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnempaquesActionPerformed
+        Empaquees ventana=new Empaquees();
+        ventana.LimpiarTable();
+        ventana.ListarEmpaques();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnempaquesActionPerformed
+
+    private void btnunidades_medidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnunidades_medidaActionPerformed
+        Medidass ventana=new Medidass();
+        ventana.LimpiarTable();
+        ventana.ListarMedidas();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnunidades_medidaActionPerformed
+
+    private void btnlaboratoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlaboratoriosActionPerformed
+        Laboratorioss la=new Laboratorioss();
+        la.LimpiarTable();
+        la.ListarLaboratorios();
+        la.setVisible(true);
+    }//GEN-LAST:event_btnlaboratoriosActionPerformed
+
+    private void btncontactos_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontactos_proveedorActionPerformed
+        UnidadesTransportee obt=new UnidadesTransportee();
+        obt.LimpiarTable();
+        obt.ListarTr();
+        obt.setVisible(true);
+    }//GEN-LAST:event_btncontactos_proveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +368,7 @@ public class menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncategorias;
     private javax.swing.JButton btncontactos_proveedor;
+    private javax.swing.JButton btncontactos_proveedor1;
     private javax.swing.JButton btncuentas_proveedor;
     private javax.swing.JButton btnempaques;
     private javax.swing.JButton btnexistencias_sucursales;

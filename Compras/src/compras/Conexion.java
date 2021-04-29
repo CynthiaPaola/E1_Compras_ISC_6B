@@ -8,21 +8,25 @@ import java.sql.SQLException;
 
 public class Conexion 
 {
-    public static Connection getConexion()     
-       {
-        String conexion="jdbc:sqlserver://localhost:1433;"
-                +"database=Compras;"
-                +"user=sa;"
-                +"password=1234;"
-                +"loginTimeout=30;";
-        try
-            {
-                Connection con=DriverManager.getConnection(conexion);
-                return con;
-            }catch(SQLException ex){
-                System.out.println(ex.toString());
-                return null;
-            }
-                
-       }     
+     public static String url="jdbc:sqlserver://RINGOLL:1433;databaseName=ERP2021;";
+    public static String usuario="userSQL";
+    public static String contraseña ="123";
+    public static String clase ="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    public static Connection conectar(){
+     Connection conexion =null;
+     try{
+         Class.forName(clase);
+         conexion = (Connection) DriverManager.getConnection(url,usuario,contraseña);
+         System.out.println("Conectado");
+     }catch(ClassNotFoundException | SQLException e){
+         System.out.println(e);
+     }
+     return conexion;
+    }
+
+    static class Login {
+
+        public Login() {
+        }
+    }
 }

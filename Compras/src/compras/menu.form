@@ -63,7 +63,7 @@
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
@@ -172,6 +172,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Unidades  Medida"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnunidades_medidaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -230,11 +233,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Categorias"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncategoriasActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnlaboratorios">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Laboratorios"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlaboratoriosActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnproductos">
                   <Properties>
@@ -298,6 +307,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Empaques"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnempaquesActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnpresentaciones_producto">
                   <Properties>
@@ -317,7 +329,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnimagenes_productos" max="32767" attributes="0"/>
-                      <Component id="btncontactos_proveedor" pref="172" max="32767" attributes="0"/>
+                      <Component id="btncontactos_proveedor" pref="184" max="32767" attributes="0"/>
+                      <Component id="btncontactos_proveedor1" alignment="0" pref="184" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -325,7 +338,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="btnimagenes_productos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="btncontactos_proveedor1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btncontactos_proveedor" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -339,6 +354,14 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btncontactos_proveedor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Unidades de Transporte"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncontactos_proveedorActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btncontactos_proveedor1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Contactos Proveedor"/>
                   </Properties>
