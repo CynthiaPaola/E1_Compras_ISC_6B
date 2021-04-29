@@ -110,6 +110,11 @@ public class Productos extends javax.swing.JFrame {
         jButton1.setText("Eliminar");
 
         jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar");
 
@@ -259,6 +264,10 @@ public class Productos extends javax.swing.JFrame {
         menu obj = new menu();
         obj.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_MenuActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

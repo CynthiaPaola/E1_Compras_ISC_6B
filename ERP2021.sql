@@ -152,10 +152,10 @@ Create table Proveedores(
 	codigoPostal varchar(5),
 	tipo char,
 	idCliente integer not null,
-	idCiudad integer not null
-	constraint pk_Direccion_Cliente primary key(idCliente),
+	idCiudad integer not null,
+	constraint pk_Direcciones_Cliente primary key(idDireccion),
 	constraint fk_Direcciones_Clientes_Ciudad FOREIGN KEY (idCiudad) REFERENCES Ciudades(idCiudad),
-	constraint fk_Direcciones_Clientes_Ciudad FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente)
+	constraint fk_Direcciones_Cliente_Ciudad FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente)
 	)
 
 	CREATE TABLE Mantenimientos(
@@ -172,6 +172,8 @@ Create table Proveedores(
 	CONSTRAINT pk_Mantenimientos PRIMARY KEY (idMantenimiento),
 	constraint fk_Mantenimientos_UnidadTransporte FOREIGN KEY (idUnidadTransporte) REFERENCES UnidadesTransporte(idUnidadTransporte)
 	)
+
+
 	create table Empaques(
 	idEmpaque integer not null,
 	idUnidad integer not null,
@@ -400,6 +402,8 @@ Create table Proveedores(
 	CONSTRAINT pk_PresentacionesProducto PRIMARY KEY(idPresentacion)
 	constraint fk_PresentacionesProducto foreign key (idEmpaque) references Empaques(idEmpaque)
 	)
+
+
 	create table HistorialPuestos(
 	idEmpleado int not null,
 	idPuesto int not null,
@@ -456,6 +460,8 @@ Create table Proveedores(
 	CONSTRAINT fk_Pagos_Pedidos FOREIGN KEY(idPedido) REFERENCES Pedidos(idPedido),
 	CONSTRAINT fk_Pagos_FormaPago FOREIGN KEY(idFormaPago) REFERENCES FormasPago(idFormaPago),
 	)
+
+
 	CREATE TABLE Ventas(
 	idVenta INTEGER IDENTITY(1,1) NOT NULL,
 	fecha DATE,
